@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link"
+import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export function MainNav({
   className,
@@ -14,46 +14,41 @@ export function MainNav({
 
   const routes = [
     {
-      href: `/${params.storeId}`,
-      label: 'Overview',
-      active: pathname === `/${params.storeId}`,
+      href: `/`,
+      label: "Overview",
+      active: pathname === `/dashboard/main`,
     },
     {
-      href: `/${params.storeId}/billboards`,
-      label: 'Billboards',
-      active: pathname === `/${params.storeId}/billboards`,
+      href: `/dashboard/billboards`,
+      label: "Billboards",
+      active: pathname === `/dashboard/billboards`,
     },
     {
-      href: `/${params.storeId}/categories`,
-      label: 'Categories',
-      active: pathname === `/${params.storeId}/categories`,
+      href: `/dashboard/categories`,
+      label: "Categories",
+      active: pathname === `/dashboard/categories`,
     },
     {
-      href: `/${params.storeId}/sizes`,
-      label: 'Sizes',
-      active: pathname === `/${params.storeId}/sizes`,
+      href: `/dashboard/sizes`,
+      label: "Sizes",
+      active: pathname === `/dashboard/sizes`,
     },
     {
-      href: `/${params.storeId}/colors`,
-      label: 'Colors',
-      active: pathname === `/${params.storeId}/colors`,
+      href: `/dashboard/colors`,
+      label: "Colors",
+      active: pathname === `/dashboard/colors`,
     },
     {
-      href: `/${params.storeId}/products`,
-      label: 'Products',
-      active: pathname === `/${params.storeId}/products`,
+      href: `/dashboard/products`,
+      label: "Products",
+      active: pathname === `/dashboard/products`,
     },
     {
-      href: `/${params.storeId}/orders`,
-      label: 'Orders',
-      active: pathname === `/${params.storeId}/orders`,
+      href: `/dashboard/orders`,
+      label: "Orders",
+      active: pathname === `/dashboard/orders`,
     },
-    {
-      href: `/${params.storeId}/settings`,
-      label: 'Settings',
-      active: pathname === `/${params.storeId}/settings`,
-    },
-  ]
+  ];
 
   return (
     <nav
@@ -65,13 +60,15 @@ export function MainNav({
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-primary',
-            route.active ? 'text-black dark:text-white' : 'text-muted-foreground'
+            "text-sm font-medium transition-colors hover:text-primary",
+            route.active
+              ? "text-black dark:text-white"
+              : "text-muted-foreground"
           )}
         >
           {route.label}
-      </Link>
+        </Link>
       ))}
     </nav>
-  )
-};
+  );
+}
