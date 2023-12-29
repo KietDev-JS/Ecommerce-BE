@@ -16,6 +16,9 @@ interface ProductsClientProps {
 }
 
 export const ProductsClient: React.FC<ProductsClientProps> = ({ data }) => {
+  const params = useParams();
+  const router = useRouter();
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -23,9 +26,15 @@ export const ProductsClient: React.FC<ProductsClientProps> = ({ data }) => {
           title={`Products (${data.length})`}
           description="Manage products for your store"
         />
+        <Button onClick={() => router.push(`/dashboard/products/new`)}>
+          <Plus className="mr-2 h-4 w-4" /> Add New
+        </Button>
       </div>
       <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
+      <Heading title="API" description="API Calls for Products" />
+      <Separator />
+      <ApiList entityName="products" entityIdName="productId" />
     </>
   );
 };
